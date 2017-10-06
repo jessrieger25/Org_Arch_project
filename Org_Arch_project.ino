@@ -31,11 +31,41 @@ void loop() {
     Serial.println(photoState);
     String mood = "";
 
-    if((photoState/10) < 50) {
-      mood = "calm";
+    if(temperature > 23) {
+      if (humidity > 50) {
+        if ((photoState/10) > 50) {
+          mood = "Summer Day";
+        }
+        else {
+          mood = "Summer Night";
+        }
+      }
+      else {
+        if ((photoState/10) > 50) {
+          mood = "Spring Day";
+        }
+        else {
+          mood = "Spring Night";
+        }
+      }
     }
     else {
-      mood = "happy";
+       if (humidity > 50) {
+        if ((photoState/10) > 50) {
+          mood = "Fall Day";
+        }
+        else {
+          mood = "Fall Night";
+        }
+      }
+      else {
+        if ((photoState/10) > 50) {
+          mood = "Winter Day";
+        }
+        else {
+          mood = "Winter Night";
+        }
+      }
     }
 
     Serial.println(mood);
