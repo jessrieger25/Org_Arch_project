@@ -7,6 +7,9 @@ dht DHT;
 #define DHT11_PIN 7
 const int sensorPin = A0;
 const int sensorPin2 = A1;
+//const int DO = 6; //Pin for touch sensor
+//const int D1 = 8; //Pin for big sound
+int sensorvalue = 0;
 int photoState;
 int tempState;
 
@@ -16,9 +19,23 @@ void setup() {
   lcd.begin(16, 2);
   Serial.begin(9600);
   pinMode(sensorPin2,INPUT);
+  lcd.println("hi");
+//  pinMode(DO, INPUT);
+//  pinMode(D1, INPUT);
 }
 //
 void loop() {
+//     sensorvalue = digitalRead(DO); 
+//     sensorvalue = digitalRead(D1);
+
+//  if (sensorvalue == 1) {
+//  Serial.println("touch");
+//  }
+//  else if (sensorvalue2 == 1) {
+//    Serial.println("sound");
+//  }
+
+     //Figure out how to delay but not delay other sensors.
     int dhtVal = DHT.read11(DHT11_PIN);
     Serial.println(DHT.temperature);
     Serial.print("Humidity = ");
@@ -67,6 +84,8 @@ void loop() {
         }
       }
     }
+
+
 
     Serial.println(mood);
     int newPhotoState = 0;
